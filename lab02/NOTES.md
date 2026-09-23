@@ -1,8 +1,9 @@
 
 Describe local GitHub states.
-Work Directory: cs-practice/lab02/
+Work Directory: cs-practice/lab02/ рабочая папка
 Branch: main.
 new file mode 100644.
+index - локальное изменение.
 
 Git - это форма файлового взаимодействия, а GitHub - сайт, позволяющий организовать это взаимодействие.
 Git diff показывает разницу неподготовленных изменений, а со --staged разницу, добавленную в индекс. 
