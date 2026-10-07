@@ -15,10 +15,15 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
         scores_copy[max_elem_index] = -1
     return result
 
-    
+def above_average(names: list[str], scores: list[float]) -> list[str]:
+    avg, result = average(scores=scores), []
+    for i in range(len(names)):
+        if scores[i] > avg: result.append(names[i])
+    return result
 
 if __name__ == '__main__':
     source_names, source_scores = ['Аня', 'Боря', 'Вика'], [7.0, 9.0, 9.0]
     print(winner(names=source_names, scores=source_scores))
     print(average(scores=source_scores))
     print(ranking(names=source_names, scores=source_scores))
+    print(above_average(names=source_names, scores=source_scores))
