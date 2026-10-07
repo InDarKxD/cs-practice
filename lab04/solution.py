@@ -1,23 +1,27 @@
 def winner(names: list[str], scores: list[float]) -> str:
-    max_res, max_res_index = 0, 0
-    for i in range(len(scores)):
+    if len(names) != len(scores) or len(scores) == 0: return ''
+    max_res, max_res_index = scores[0], 0
+    for i in range(1, len(scores)):
         if scores[i] > max_res: max_res, max_res_index = scores[i], i
     return names[max_res_index]
 
 def average(scores: list[float]) -> float:
-    return sum(scores)/len(scores)
+    if len(scores) == 0: return 0
+    return round(sum(scores)/len(scores), 2)
 
 def ranking(names: list[str], scores: list[float]) -> list[str]:
-    scores_copy, result = scores.copy(), []
-    while max(scores_copy) != -1:
+    names_copy, scores_copy, result = names.copy(), scores.copy(), []
+    if len(names_copy) != len(scores_copy): return []
+    while len(scores_copy) != 0:
         max_elem_index = scores_copy.index(max(scores_copy))
-        result.append(names[max_elem_index])
-        scores_copy[max_elem_index] = -1
+        result.append(names_copy.pop(max_elem_index))
+        scores_copy.pop(max_elem_index)
     return result
 
 def above_average(names: list[str], scores: list[float]) -> list[str]:
     avg, result = average(scores=scores), []
-    for i in range(len(names)):
+    if len(names) != len(scores): return []
+    for i in range(len(scores)):
         if scores[i] > avg: result.append(names[i])
     return result
 
