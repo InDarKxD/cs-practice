@@ -12,9 +12,10 @@ def read_rows(lines: list[str]) -> list[dict]:
     return container
 
 def count_types(rows: list[dict]) -> dict:
-    status_count = {'запуск': 0, 'проверка': 0, 'ошибка': 0, 'выгрузка': 0}
+    status_count = {}
     for row in rows:
-        status_count[row['тип']] += 1
+        if row['тип'] not in status_count.keys(): status_count[row['тип']] = 0
+        else: status_count[row['тип']] += 1
     return status_count
 
 def total_minutes(rows: list[dict], kind: str) -> float:
