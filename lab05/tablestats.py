@@ -10,4 +10,7 @@ def count_types(rows):
 def total_minutes(rows, kind):
     time = 0
     for row in rows: time += row['минуты'] if row['тип'] == kind else 0
-    return time
+    return f'{time:.1f}'
+
+def to_csv(counts): print(f'тип,количество\nвыгрузка,{counts['выгрузка']}\nзапуск,{counts['запуск']}\nошибка,{counts['ошибка']}\nпроверка,{counts['проверка']}')
+
