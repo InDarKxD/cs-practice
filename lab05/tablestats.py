@@ -24,4 +24,4 @@ def total_minutes(rows: list[dict], kind: str) -> float:
         time += row['минуты'] if row['тип'] == kind else 0.0
     return f'{time:.1f}'
 
-def to_csv(counts: dict) -> str: return f'тип,количество\nвыгрузка,{counts['выгрузка']}\nзапуск,{counts['запуск']}\nошибка,{counts['ошибка']}\nпроверка,{counts['проверка']}'
+def to_csv(counts: dict) -> str: return f"тип,количество\nвыгрузка,{counts['выгрузка']}\nзапуск,{counts['запуск']}\nошибка,{counts['ошибка']}\nпроверка,{counts['проверка']}"
