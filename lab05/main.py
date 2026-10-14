@@ -1,7 +1,8 @@
 from tablestats import *
+import sys
 
 def main():
-    with open(file=input(), mode='r', encoding='utf-8') as file:
+    with open(file=sys.stdin.readline().strip(), mode='r', encoding='utf-8') as file:
         file_read = read_rows(file.readlines())
         print(len(file_read))
         print(len(count_types(file_read)))

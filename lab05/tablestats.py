@@ -4,11 +4,11 @@ def read_rows(lines: list[str]) -> list[dict]:
         line = line.rstrip('\n').rstrip('\r')
         if line == '': continue
         line = line.split(',')
-        if len(line) != 3: continue
         if header == []:
             header = line
             continue
-        container.append({header[0]: line[0], header[1]: line[1], header[2]: float(line[2])})
+        if len(line) != len(header): continue
+        container.append({header[0]: line[0], header[1]: line[1], header[2]: line[2]})
     return container
 
 def count_types(rows: list[dict]) -> dict:
@@ -21,7 +21,8 @@ def count_types(rows: list[dict]) -> dict:
 def total_minutes(rows: list[dict], kind: str) -> float:
     time = 0.0
     for row in rows:
-        time += row['минуты'] if row['тип'] == kind else 0.0
+        try: time += float(row['минуты']) if row['тип'] == kind else 0.0
+        except Exception: pass
     return f'{time:.1f}'
 
 def to_csv(counts: dict) -> str: return f"тип,количество\nвыгрузка,{counts['выгрузка']}\nзапуск,{counts['запуск']}\nошибка,{counts['ошибка']}\nпроверка,{counts['проверка']}"
